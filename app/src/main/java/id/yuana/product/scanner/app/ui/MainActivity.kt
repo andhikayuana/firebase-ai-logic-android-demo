@@ -1,4 +1,4 @@
-package id.yuana.product.scanner.app
+package id.yuana.product.scanner.app.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

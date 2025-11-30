@@ -8,6 +8,8 @@ espressoCore = "3.7.0"
 lifecycleRuntimeKtx = "2.9.4"
 activityCompose = "1.11.0"
 composeBom = "2024.09.00"
+androidx-camerax = "1.5.0-beta01"
+firebase-bom = "34.1.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -24,6 +26,22 @@ androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "u
 androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
+androidx-camerax-core = { module = "androidx.camera:camera-core", version.ref = "androidx-camerax" }
+androidx-camerax-camera2 = { module = "androidx.camera:camera-camera2", version.ref = "androidx-camerax" }
+androidx-camerax-lifecycle = { module = "androidx.camera:camera-lifecycle", version.ref = "androidx-camerax" }
+androidx-camerax-compose = { module = "androidx.camera:camera-compose", version.ref = "androidx-camerax" }
+androidx-camerax-extensions = { module = "androidx.camera:camera-extensions", version.ref = "androidx-camerax" }
+firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebase-bom" }
+firebase-ai = { module = "com.google.firebase:firebase-ai" }
+
+[bundles]
+androidx-camerax = [
+    "androidx-camerax-core",
+    "androidx-camerax-camera2",
+    "androidx-camerax-lifecycle",
+    "androidx-camerax-compose",
+    "androidx-camerax-extensions"
+]
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
