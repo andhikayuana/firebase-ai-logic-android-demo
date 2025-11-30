@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import id.yuana.product.scanner.app.ui.components.camera.CameraScreen
 import id.yuana.product.scanner.app.ui.theme.ProductScannerAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -20,9 +21,12 @@ class MainActivity : ComponentActivity() {
         setContent {
             ProductScannerAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
+//                    Greeting(
+//                        name = "Android",
+//                        modifier = Modifier.padding(innerPadding)
+//                    )
+                    CameraScreen(
+
                     )
                 }
             }
