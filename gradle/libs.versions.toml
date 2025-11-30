@@ -33,6 +33,7 @@ androidx-camerax-compose = { module = "androidx.camera:camera-compose", version.
 androidx-camerax-extensions = { module = "androidx.camera:camera-extensions", version.ref = "androidx-camerax" }
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebase-bom" }
 firebase-ai = { module = "com.google.firebase:firebase-ai" }
+accompanist-permissions = { module = "com.google.accompanist:accompanist-permissions", version = "0.37.3" }
 
 [bundles]
 androidx-camerax = [

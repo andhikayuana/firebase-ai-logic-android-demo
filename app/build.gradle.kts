@@ -52,7 +52,7 @@ dependencies {
     implementation(libs.androidx.compose.material3)
 
     implementation(libs.bundles.androidx.camerax)
-
+    implementation(libs.accompanist.permissions)
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.ai)
 
