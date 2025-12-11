@@ -2,6 +2,7 @@ package id.yuana.product.scanner.app.ui.components.camera
 
 import android.Manifest
 import androidx.camera.compose.CameraXViewfinder
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -18,6 +19,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -26,10 +28,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.isGranted
 import com.google.accompanist.permissions.rememberPermissionState
 import id.yuana.product.scanner.app.data.model.ProductInfo
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable
@@ -41,6 +45,7 @@ fun CameraScreen(
     val state by viewModel.state.collectAsStateWithLifecycle()
     val context = LocalContext.current
     val cameraPermissionState = rememberPermissionState(Manifest.permission.CAMERA)
+    val scope = rememberCoroutineScope()
 
     if (cameraPermissionState.status.isGranted) {
 
@@ -53,18 +58,25 @@ fun CameraScreen(
         ) {
             CameraPreview(state)
 
-//            AnalyzingOverlay(
-//                modifier = Modifier.align(Alignment.Center)
-//            )
+            AnimatedVisibility(
+                visible = state.isAnalyzing,
+                modifier = Modifier.align(Alignment.Center)
+            ) {
+
+                AnalyzingOverlay(
+
+                )
+            }
 
             ProductInfoOverlay(
                 modifier = Modifier
                     .fillMaxWidth()
                     .align(Alignment.BottomEnd)
                     .padding(16.dp),
-                productInfo = ProductInfo(),
+                productInfo = state.analyzedProductInfo,
                 onAnalyze = {
                     //todo viewmodel
+                    scope.launch { viewModel.onAnalyze(context) }
                 }
             )
         }

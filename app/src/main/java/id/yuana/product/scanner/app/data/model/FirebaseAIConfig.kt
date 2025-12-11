@@ -3,7 +3,7 @@ package id.yuana.product.scanner.app.data.model
 import com.google.firebase.ai.type.Schema
 
 data class FirebaseAIConfig(
-    val model: String = "gemini-1.5-flash",
+    val model: String = "gemini-2.5-flash-lite",
     val outputJsonSchema: Schema = Schema.obj(
         mapOf(
             "name" to Schema.string(

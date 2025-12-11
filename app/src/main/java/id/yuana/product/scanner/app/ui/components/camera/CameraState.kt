@@ -8,5 +8,6 @@ data class CameraState(
     val surfaceRequest: SurfaceRequest? = null,
     val selector: CameraSelector = CameraSelector.DEFAULT_BACK_CAMERA,
 //    temp bitmap?
+    val isAnalyzing: Boolean = false,
     val analyzedProductInfo: ProductInfo = ProductInfo()
 )
