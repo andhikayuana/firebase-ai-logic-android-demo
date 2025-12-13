@@ -2,6 +2,7 @@ package id.yuana.product.scanner.app.integration.firebase
 
 import android.graphics.Bitmap
 import android.util.Log
+import androidx.core.graphics.scale
 import com.google.firebase.Firebase
 import com.google.firebase.ai.ai
 import com.google.firebase.ai.type.GenerativeBackend
@@ -31,11 +32,8 @@ class FirebaseAI(
     ): ProductInfo? {
         val currentTime = System.currentTimeMillis()
 
-//        val (maxWidth, maxHeight) = configV2.maxResolution
-
         val prompt = content {
-//            image(image.resizeToMaxSize(maxWidth, maxHeight).compressToWebp())
-            image(image)
+            image(image.resizeToMaxSize())
             text(config.userPrompt)
 
         }
@@ -49,5 +47,18 @@ class FirebaseAI(
         Log.d("FirebaseAI", "FirebaseAI response duration: ${duration}ms")
 
         return imageAnalysisResponse
+    }
+}
+
+fun Bitmap.resizeToMaxSize(
+    maxWidth: Int = 640,
+    maxHeight: Int = 640
+): Bitmap {
+    val (width, height) = this.width to this.height
+    val scale = minOf(maxWidth.toFloat() / width, maxHeight.toFloat() / height, 1f)
+    return if (scale < 1f) {
+        this.scale((width * scale).toInt(), (height * scale).toInt())
+    } else {
+        this
     }
 }
