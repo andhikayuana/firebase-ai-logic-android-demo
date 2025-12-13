@@ -16,7 +16,7 @@ Firebase AI Logic Android Demo for GDG DevFest 2025, Android Workshop
 1. Go to [Firebase Console](https://console.firebase.google.com/)
 2. Create a new project
 3. Add an Android app to the project
-4. Register the app with your app's package name (e.g., com.example.firebaseailogicdemo)
+4. Register the app with your app's package name (e.g., `id.yuana.product.scanner.app`)
 5. Download the `google-services.json` file and place it in the `app/` directory of your Android project
 6. Enable Firebase AI Logic in the Firebase Console
 7. Create and configure your AI Logic models as needed
